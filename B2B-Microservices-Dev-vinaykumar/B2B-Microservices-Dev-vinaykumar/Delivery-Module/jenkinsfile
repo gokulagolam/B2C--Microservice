@@ -1,0 +1,19 @@
+pipeline {
+    agent any
+    stages {
+        stage('Checkout') {
+            steps {
+                // Checkout the code from SCM
+                checkout scm
+            }
+        }
+        stage('Build and Package') {
+            steps {
+                script {
+                    // Run Maven to build and package the application into a JAR file
+                    sh 'mvn clean package'
+                }
+            }
+        }
+    }
+}
